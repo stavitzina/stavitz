@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aleksiia Sokolova-Stavitsyna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1a17;
+    --paper: #f6f2ea;
+    --rust: #b5532c;
+    --moss: #4a5d4e;
+    --slate: #3c4856;
+    --line: rgba(28,26,23,0.14);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ============ LANGUAGE GATE ============ */
+  .gate {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper);
+    z-index: 100;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+  .gate.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .gate-mark {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.3em;
+    font-weight: 600;
+  }
+  .gate-sub {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(28,26,23,0.5);
+    margin-bottom: 2.8em;
+  }
+  .gate-choices {
+    display: flex;
+    gap: 1.2rem;
+  }
+  .gate-btn {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    padding: 0.9em 2em;
+    border: 1.5px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.25s ease, color 0.25s ease;
+    letter-spacing: 0.02em;
+  }
+  .gate-btn:hover, .gate-btn:focus-visible {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .gate-btn:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
+
+  /* ============ MAIN PAGE ============ */
+  .page {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .page.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* ---- header / contacts ---- */
+  header {
+    padding: 1.4rem 6vw 1.2rem;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  .back-link {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: rgba(28,26,23,0.55);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    margin-right: 1rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--rust); }
+  .back-link:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
+  .brand-row {
+    display: flex;
+    align-items: center;
+  }
+  .contacts {
+    display: flex;
+    gap: 1.1rem;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+  .contacts a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .contacts a:hover { border-color: var(--rust); color: var(--rust); }
+
+  /* ---- hero ---- */
+  .hero {
+    padding: 3.2rem 6vw 2rem;
+    max-width: 900px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2rem, 5.5vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  .hero p {
+    margin-top: 1.2rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(28,26,23,0.72);
+    max-width: 540px;
+  }
+
+  /* ---- three paths ---- */
+  .paths {
+    padding: 1rem 6vw 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+    max-width: 1200px;
+  }
+  @media (max-width: 900px) {
+    .paths { grid-template-columns: 1fr; }
+  }
+
+  .path {
+    position: relative;
+    border: 1.5px solid var(--line);
+    border-radius: 4px;
+    padding: 2rem 1.6rem;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    background: var(--paper);
+  }
+  .path:hover, .path:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px -16px rgba(28,26,23,0.35);
+  }
+  .path:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+
+  .path-tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+    opacity: 0.55;
+  }
+  .path h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  .path p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(28,26,23,0.68);
+    flex-grow: 1;
+  }
+  .path-cta {
+    margin-top: 1.4rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+  .path-cta .arrow { transition: transform 0.25s ease; }
+  .path:hover .path-cta .arrow { transform: translateX(4px); }
+
+  /* path-specific accent border on hover */
+  .path[data-accent="photo"]:hover { border-color: var(--rust); }
+  .path[data-accent="ai"]:hover { border-color: var(--moss); }
+  .path[data-accent="it"]:hover { border-color: var(--slate); }
+  .path[data-accent="photo"] .path-cta { color: var(--rust); }
+  .path[data-accent="ai"] .path-cta { color: var(--moss); }
+  .path[data-accent="it"] .path-cta { color: var(--slate); }
+
+  footer {
+    padding: 2rem 6vw 3rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: rgba(28,26,23,0.45);
+    border-top: 1px solid var(--line);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- LANGUAGE GATE -->
+  <div class="gate" id="gate">
+    <div class="gate-mark">A. Sokolova-Stavitsyna</div>
+    <div class="gate-sub">choose language / выберите язык</div>
+    <div class="gate-choices">
+      <button class="gate-btn" onclick="enter('ru')">Русский</button>
+      <button class="gate-btn" onclick="enter('en')">English</button>
+    </div>
+  </div>
+
+  <!-- ================= RU PAGE ================= -->
+  <div class="page" id="page-ru">
+    <header>
+      <div class="brand-row">
+        <a href="#" class="back-link" onclick="goBack(event)">← назад</a>
+        <div class="brand">Алексия Соколова-Ставицына</div>
+      </div>
+      <div class="contacts">
+        <a href="mailto:stavitzina@gmail.com">stavitzina@gmail.com</a>
+        <a href="tel:+79257606309">+7 925 760 63 09</a>
+        <a href="tel:+37124774727">+371 24 774 727</a>
+        <a href="https://t.me/stavitz" target="_blank">Telegram</a>
+        <a href="https://wa.me/37124774727" target="_blank">WhatsApp</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>Вам нужно одно из трёх</h1>
+    </section>
+
+    <section class="paths">
+      <a class="path" data-accent="ai" href="https://t.me/stavitz" target="_blank">
+        <div class="path-tag">ИИ для бизнеса</div>
+        <h2>Заменяю рутину агентами — пока вы делаете то, что приносит деньги.</h2>
+        <p>Настраиваю бота, который сам отвечает в переписке, заявки попадают в нужное место без таблиц, которые никто не обновляет, дедлайны напоминают о себе без секретаря, а деньги считаются автоматически.</p>
+        <div class="path-cta">Написать в Telegram <span class="arrow">→</span></div>
+      </a>
+
+      <a class="path" data-accent="photo" href="https://stavitz.tilda.ws/" target="_blank">
+        <div class="path-tag">Фотография</div>
+        <h2>Фотографирую людей так, чтобы в конце им очень-очень понравилось.</h2>
+        <p>Портретная и свадебная съёмка. Живые эмоции, авторская обработка, опыт работы с B2B и частными клиентами с 2015 года.</p>
+        <div class="path-cta">Портфолио <span class="arrow">→</span></div>
+      </a>
+
+      <a class="path" data-accent="it" href="resume-ru.html">
+        <div class="path-tag">Product / IT</div>
+        <h2>7+ лет соединяю процессы, людей и продукт в одну работающую систему.</h2>
+        <p>Product & Operations Manager: Wolt Enterprise/DoorDash, OBI → DomLenta. Построение сервисов с нуля, автоматизация внутренних процессов, управление командами.</p>
+        <div class="path-cta">Резюме <span class="arrow">→</span></div>
+      </a>
+    </section>
+
+    <footer>stavitzina@gmail.com · Москва</footer>
+  </div>
+
+  <!-- ================= EN PAGE ================= -->
+  <div class="page" id="page-en">
+    <header>
+      <div class="brand-row">
+        <a href="#" class="back-link" onclick="goBack(event)">← back</a>
+        <div class="brand">Aleksiia Sokolova-Stavitsyna</div>
+      </div>
+      <div class="contacts">
+        <a href="mailto:stavitzina@gmail.com">stavitzina@gmail.com</a>
+        <a href="tel:+37124774727">+371 24 774 727</a>
+        <a href="tel:+79257606309">+7 925 760 63 09</a>
+        <a href="https://www.instagram.com/stavitsin/" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/alexia-sokolova-stavitsyna-923685202/" target="_blank">LinkedIn</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>Pick one of three</h1>
+    </section>
+
+    <section class="paths">
+      <a class="path" data-accent="ai" href="https://t.me/stavitz" target="_blank">
+        <div class="path-tag">AI for Business</div>
+        <h2>I replace the busywork with agents — so you can do the part that pays.</h2>
+        <p>I set up a bot that answers customers on its own, requests land where they should without a spreadsheet nobody updates, deadlines remind themselves without an assistant, and the books get done automatically.</p>
+        <div class="path-cta">Message on Telegram <span class="arrow">→</span></div>
+      </a>
+
+      <a class="path" data-accent="photo" href="https://www.instagram.com/stavitsin/" target="_blank">
+        <div class="path-tag">Photography</div>
+        <h2>I photograph people so that, by the end, they really like what they see.</h2>
+        <p>Portrait and wedding photography. Real emotion, considered editing, B2B and private clients since 2015.</p>
+        <div class="path-cta">Portfolio <span class="arrow">→</span></div>
+      </a>
+
+      <a class="path" data-accent="it" href="resume.html">
+        <div class="path-tag">Product / IT</div>
+        <h2>7+ years turning process, people and product into one working system.</h2>
+        <p>Product & Operations Manager: Wolt Enterprise/DoorDash, OBI → DomLenta. Built services from scratch, led process redesign and team restructuring.</p>
+        <div class="path-cta">Résumé <span class="arrow">→</span></div>
+      </a>
+    </section>
+
+    <footer>stavitzina@gmail.com · Riga · Cyprus · Moscow</footer>
+  </div>
+
+<script>
+  function enter(lang) {
+    document.getElementById('gate').classList.add('hidden');
+    document.getElementById('page-' + lang).classList.add('active');
+    history.replaceState(null, '', '#' + lang);
+  }
+  function goBack(e) {
+    e.preventDefault();
+    document.getElementById('page-ru').classList.remove('active');
+    document.getElementById('page-en').classList.remove('active');
+    document.getElementById('gate').classList.remove('hidden');
+    history.replaceState(null, '', location.pathname);
+  }
+  // allow deep-linking via #ru or #en
+  window.addEventListener('DOMContentLoaded', () => {
+    if (location.hash === '#ru' || location.hash === '#en') {
+      enter(location.hash.slice(1));
+    }
+  });
+</script>
+
+</body>
+</html>

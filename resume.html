@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aleksiia Sokolova-Stavitsyna — Résumé</title>
+<style>
+  :root {
+    --ink: #1c1a17;
+    --paper: #f6f2ea;
+    --slate: #3c4856;
+    --line: rgba(28,26,23,0.16);
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.5;
+  }
+  .back-bar {
+    padding: 1rem 6vw;
+    border-bottom: 1px solid var(--line);
+  }
+  .back-bar a {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--slate);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .back-bar a:hover { text-decoration: underline; }
+
+  .resume {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 6vw 5rem;
+  }
+
+  .r-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.6rem;
+    margin-bottom: 1.8rem;
+  }
+  .r-header h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.9rem;
+    letter-spacing: -0.01em;
+  }
+  .r-role {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate);
+    margin-top: 0.3rem;
+  }
+  .r-contacts {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    text-align: right;
+  }
+  .r-contacts a { color: var(--ink); text-decoration: none; display: block; margin-bottom: 0.25rem; }
+  .r-contacts a:hover { text-decoration: underline; }
+
+  .r-about {
+    font-size: 0.98rem;
+    color: rgba(28,26,23,0.78);
+    max-width: 640px;
+    margin-bottom: 2.6rem;
+  }
+
+  .r-section-title {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--slate);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.2rem;
+    margin-top: 2.6rem;
+  }
+
+  .job {
+    margin-bottom: 1.7rem;
+  }
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .job-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.08rem;
+  }
+  .job-date {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: rgba(28,26,23,0.55);
+    white-space: nowrap;
+  }
+  .job ul {
+    margin-top: 0.5rem;
+    padding-left: 1.1rem;
+  }
+  .job li {
+    font-size: 0.91rem;
+    color: rgba(28,26,23,0.78);
+    margin-bottom: 0.35rem;
+  }
+
+  .edu-item { margin-bottom: 1.4rem; }
+  .edu-head {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .edu-title { font-family: var(--serif); font-weight: 600; font-size: 1.02rem; }
+  .edu-date { font-family: var(--mono); font-size: 0.76rem; color: rgba(28,26,23,0.55); }
+  .edu-desc { font-size: 0.9rem; color: rgba(28,26,23,0.72); margin-top: 0.3rem; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .skills-grid dt {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--slate);
+    padding-top: 0.1rem;
+  }
+  .skills-grid dd { color: rgba(28,26,23,0.78); }
+
+  @media (max-width: 640px) {
+    .r-header { flex-direction: column; }
+    .r-contacts { text-align: left; }
+    .skills-grid { grid-template-columns: 1fr; gap: 0.1rem 0; }
+    .skills-grid dt { margin-top: 0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="back-bar"><a href="index.html#en">← back</a></div>
+
+<div class="resume">
+
+  <div class="r-header">
+    <div>
+      <h1>Aleksiia Sokolova-Stavitsyna</h1>
+      <div class="r-role">Product & Operations Manager</div>
+    </div>
+    <div class="r-contacts">
+      <a href="mailto:stavitzina@gmail.com">stavitzina@gmail.com</a>
+      <a href="tel:+37124774727">+371 24 774 727</a>
+      <a href="https://www.linkedin.com/in/alexia-sokolova-stavitsyna-923685202/" target="_blank">LinkedIn →</a>
+    </div>
+  </div>
+
+  <p class="r-about">Product and operations manager with 7+ years across service development, internal tools, cross-functional coordination — roles where business processes, people and tech have to become one system. Experience includes building services from scratch, improving team workflows, and using AI tools to make operations faster and cleaner — an area I'm actively expanding.</p>
+
+  <div class="r-section-title">Work Experience</div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Product Manager, OBI → DomLenta</span>
+      <span class="job-date">Oct 2025 – Feb 2026</span>
+    </div>
+    <ul>
+      <li>Supported company acquisition: internal process audits, gap analysis, full process redesign from scratch (commercial model, customer experience, internal PnL analytics).</li>
+      <li>Developed a product item-return module and authored functional requirements for the IT team.</li>
+      <li>Built a moving service from scratch: AI-driven market research, PnL modelling, vendor selection, operations logic, customer journey design, documentation.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Product Manager, Wolt Enterprise / DoorDash</span>
+      <span class="job-date">Aug 2023 – Jul 2025</span>
+    </div>
+    <ul>
+      <li>Led 15+ internal product projects across automation & AI, UX/UI of internal tools, org design, and team engagement.</li>
+      <li>Identified a courier fraud pattern and implemented a prevention solution — 22% reduction in incidents, saving up to €1.5M/year.</li>
+      <li>Prevented payment fraud using Ravelin: investigated stolen cards, account takeovers, and promo abuse by analysing cross-entity patterns.</li>
+      <li>Reorganized and restructured a 14-person team; introduced Kanban and performance metrics.</li>
+      <li>Built out B2B and B2C support teams; achieved 92% retention over one year. Quality hiring reduced QA hours from 16 to 4 hrs/week (−75%) without KPI loss.</li>
+      <li>Resolved 30+ complex B2B/B2C cases, strengthening customer service quality and NPS.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">International Event & Operations Coordinator (contract)</span>
+      <span class="job-date">Aug 2022 – Aug 2023</span>
+    </div>
+    <ul>
+      <li>Acted as a production manager, a liaison between artists, legal, finance, logistics and PR.</li>
+      <li>Built a Bitrix24 system for the project from scratch.</li>
+      <li>Supervised up to 30 volunteers, ensuring clear roles, onboarding and reliable on-site execution.</li>
+      <li>Managed event-day operations, handled urgent requests and solved issues during concerts and live broadcasts; supported hospitality and guest experience.</li>
+      <li>Events took place at major cultural venues in Moscow, including the Bolshoi Theatre.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Senior IT Recruiter, HR Lunapark (contract)</span>
+      <span class="job-date">Nov 2021 – Mar 2022</span>
+    </div>
+    <ul>
+      <li>Matched senior Russian developers with high-growth IT startups across Europe and the US, including Silicon Valley.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <span class="job-title">Business Development Manager, Meeting.lv</span>
+      <span class="job-date">Jul 2017 – Jun 2019</span>
+    </div>
+    <ul>
+      <li>Managed B2B advertiser accounts; doubled conversion from negotiations to purchase.</li>
+      <li>Developed client growth strategies, turning advertisers into long-term partners and increasing revenue.</li>
+      <li>CRM management, Excel financial modelling, documentation, SMM, and editorial writing.</li>
+    </ul>
+  </div>
+
+  <div class="r-section-title">Education & Practice</div>
+
+  <div class="edu-item">
+    <div class="edu-head">
+      <span class="edu-title">AI-driven PR course "Resonance"</span>
+      <span class="edu-date">2026</span>
+    </div>
+    <div class="edu-desc">Gathering and filtering external context, ideas validation, creating PR artefacts.</div>
+  </div>
+
+  <div class="edu-item">
+    <div class="edu-head">
+      <span class="edu-title">Yandex Practicum — Mid-level Project Manager course</span>
+      <span class="edu-date">2025–2026</span>
+    </div>
+    <div class="edu-desc">Team management, metrics, analytics, UX/UI, DevOps, documentation.</div>
+  </div>
+
+  <div class="edu-item">
+    <div class="edu-head">
+      <span class="edu-title">Institute of Psychodynamic Coaching (IPDC)</span>
+      <span class="edu-date">2021–2023</span>
+    </div>
+    <div class="edu-desc">Ranked #1 in group dynamics & organizational psychology education by the APA. 164-hour programme + 40 hours of practice and business case analysis. Practical work in crisis training for a top-3 BigTech company in Russia (NDA).</div>
+  </div>
+
+  <div class="edu-item">
+    <div class="edu-head">
+      <span class="edu-title">Portrait and wedding photographer, personal brand "stavitz"</span>
+      <span class="edu-date">since 2015</span>
+    </div>
+    <div class="edu-desc">B2B and B2C client work, brand promotion, workshops and mentoring.</div>
+  </div>
+
+  <div class="edu-item">
+    <div class="edu-head">
+      <span class="edu-title">NGO "Summer School"</span>
+      <span class="edu-date">2015–2025</span>
+    </div>
+    <div class="edu-desc">Organiser of the psychology stream: curriculum design, recruitment, logistics. Participant in UX/UI, behavioural economics, film studies, and journalism streams.</div>
+  </div>
+
+  <div class="edu-item">
+    <div class="edu-head">
+      <span class="edu-title">Volunteer work</span>
+      <span class="edu-date"></span>
+    </div>
+    <div class="edu-desc">Organized a charity concert for children with oncological conditions (2022). Erasmus+ projects: UK, Turkey, Poland, Estonia, Latvia, Russia (2016).</div>
+  </div>
+
+  <div class="r-section-title">Skills & Methodologies</div>
+  <dl class="skills-grid">
+    <dt>PM</dt>
+    <dd>Market research, A/B tests, CJM, JTBD, Agile (Scrum, Kanban), PRD, vendor and stakeholder management, task breakdown, backlog management, timeline and resource management.</dd>
+    <dt>Team Leadership</dt>
+    <dd>Team engagement and motivation, KPI & SLA setting, feedback & NPS, employee development, conflict mediation.</dd>
+    <dt>Coaching & Psychodynamics</dt>
+    <dd>BART, Clifton 20 Strengths, TKI (Thomas-Kilmann), JCM (Job Characteristics Model), DISC, Self-Determination Theory (Deci & Ryan).</dd>
+    <dt>Languages</dt>
+    <dd>English C2, Latvian C1, basic German, Russian native.</dd>
+    <dt>Other</dt>
+    <dd>Hands-on prototyping with AI coding tools, professional portrait photography, SMM, video editing.</dd>
+  </dl>
+
+  <div class="r-section-title">Tools & Software</div>
+  <dl class="skills-grid">
+    <dt>PM</dt>
+    <dd>Jira, Miro, Slack, Monday, Workday, Favro, Bitrix24, Looker, Tableau, Confluence.</dd>
+    <dt>AI</dt>
+    <dd>Claude, n8n, Make, GPT, OpenClaw, Lovable, Perplexity.</dd>
+    <dt>Design & Visuals</dt>
+    <dd>Adobe Photoshop & Lightroom, Canva, Figma basics.</dd>
+    <dt>Other</dt>
+    <dd>MS Office (Word, Excel, PowerPoint), chatbot design, Ravelin (anti-fraud), SMM tools, video editing.</dd>
+  </dl>
+
+</div>
+
+</body>
+</html>
